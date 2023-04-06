@@ -48,7 +48,7 @@ function getPrompts() {
     return false;
 
   } 
-  if (confirm("Would u like lowercase letters in your password?")) {
+  if (confirm("Would you like lowercase letters in your password?")) {
     choiceArr = choiceArr.concat(lowerCase);
   }
   if (confirm("Would you like uppercase letters in your password?")) {
