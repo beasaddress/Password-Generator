@@ -29,6 +29,7 @@ function generatePassword() {
 //getting information and selected criteria from user
 //parseInt will turn the string input from the user into a number 
 function getPrompts(){
+  choiceArr = []; //resetting it to be empty so that it will always restart from here
   characterLength = parseInt(prompt("how many chacacters should we make this password? should between 8 and 128"))
   //NaN stands for not a number....this makes sure than the user types the right thing...if they do, the if statement below should return as false
   if(isNaN(characterLength) || characterLength < 8 || characterLength > 128) { //here, we are basically hoping all this is false because that means the user is inputing accepting criteria so that we can generate a password for them
@@ -36,4 +37,17 @@ function getPrompts(){
     return false;
 
   } 
+  if (confirm("would u like lowercase letters in your password?")) {
+    choiceArr = choiceArr.concat(lowerCase);
+  }
+  if (confirm("would you like uppercase letters in your password?")) {
+    choiceArr = choiceArr.concat(upperCase);
+  }
+  if(confirm("would you like special characters?")) {
+    choiceArr = choiceArr.concat(specialChar);
+  }
+  if(confirm("would you like numbers?")) {
+    choiceArr = choiceArr.concat(numberArr);
+  }
+  return true;
 }
