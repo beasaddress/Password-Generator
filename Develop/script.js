@@ -16,19 +16,30 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    var correctPrompts = getPrompts(); //either true or false depending on if user followed the prompts correctly
+    var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
+   if(correctPrompts) { //only if they prompts are corrects, then i can start using generatepassword method and query selector etc to generate the right password
+    var newPassword = generatePassword();
+    
+  
+    passwordText.value = newPassword;
+  } else {
+    passwordText.value = ""; 
+  }
 }
 
 function generatePassword() {
-
+var password = "";
+for(var i = 0; i < characterLength; i++) {
+  var randomIndex = Math.floor(Math.random() * choiceArr.length); //the function will gfet a random letter using math.random
+  password = password + choiceArr[randomIndex];
+  }
+  return password;
 }
 //getting information and selected criteria from user
 //parseInt will turn the string input from the user into a number 
-function getPrompts(){
+function getPrompts() {
   choiceArr = []; //resetting it to be empty so that it will always restart from here
   characterLength = parseInt(prompt("how many chacacters should we make this password? should between 8 and 128"))
   //NaN stands for not a number....this makes sure than the user types the right thing...if they do, the if statement below should return as false
